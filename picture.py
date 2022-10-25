@@ -12,7 +12,7 @@ def get_picture_links(query):
 
 
 manicure_urls = get_picture_links("маникюр без лица")
-pedicure_urls = get_picture_links("педикюр без лица")
+pedicure_urls = get_picture_links("педикюр")
 
 
 def get_manicure_link():
