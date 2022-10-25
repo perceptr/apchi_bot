@@ -9,7 +9,9 @@ bot = telebot.TeleBot('5768637891:AAFXvKfqu0Dip25TnKs06ZeQx0Rt8_etizs')
 def start(message):
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
     btn1 = types.KeyboardButton("💅 Ноготочки")
+    btn2 = types.KeyboardButton("💅 Педикюр")
     markup.add(btn1)
+    markup.add(btn2)
     bot.send_message(message.chat.id,
                      "Привет, {0.first_name}!\nЯ - {1.first_name}, бот созданный для того, чтобы ты мог(ла) "
                      "посмотреть на красивые ноготочки.".format(
@@ -19,9 +21,11 @@ def start(message):
 @bot.message_handler(content_types=['text'])
 def func(message):
     if message.text == "💅 Ноготочки":
-        bot.send_photo(message.chat.id, picture.get_picture_link())
+        bot.send_photo(message.chat.id, picture.get_manicure_link())
+    elif message.text == "💅 Педикюр":
+        bot.send_photo(message.chat.id, picture.get_pedicure_link())
     else:
-        bot.send_message(message.chat.id, text="На такую комманду я не запрограммировал..")
+        bot.send_message(message.chat.id, text="Чё доебался?! Нажми на кнопку!")
 
 
 bot.polling(none_stop=True)
