@@ -25,7 +25,7 @@ def func(message):
     elif message.text == "💅 Педикюр":
         bot.send_photo(message.chat.id, picture.get_pedicure_link())
     else:
-        bot.send_message(message.chat.id, text="Чё доебался?! Нажми на кнопку!")
+        bot.send_message(message.chat.id, text="Я не знаю такой команды!")
 
 
 bot.polling(none_stop=True)
