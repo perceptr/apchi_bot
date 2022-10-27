@@ -1,18 +1,23 @@
-import requests
-from bs4 import BeautifulSoup as bs
 import random
+from YandexImagesParser.ImageParser import YandexImage
 
 
-def get_picture_link():
-    r = requests.get("https://www.google.ru/search?tbm=isch&q=ноготочки")
-    text = r.text
-    soup = bs(text, "html.parser")
-    the_result = {}
-    i = 0
-    for qwerty in soup.find_all('img'):
-        the_result[i] = qwerty.get('src')
-        print(the_result[i])
-        i = i + 1
-        print(i)
-    i = random.randint(1, 19)
-    return the_result[i]
+def get_picture_links(query):
+    parser = YandexImage()
+    urls = []
+    for item in parser.search(query):
+        urls.append(item.preview.url)
+
+    return urls
+
+
+manicure_urls = get_picture_links("маникюр без лица")
+pedicure_urls = get_picture_links("педикюр")
+
+
+def get_manicure_link():
+    return random.choice(manicure_urls)
+
+
+def get_pedicure_link():
+    return random.choice(pedicure_urls)
