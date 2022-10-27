@@ -1,6 +1,5 @@
-import telebot
-from telebot import types  # для указание типов
 import picture
+import telebot
 
 bot = telebot.TeleBot('5768637891:AAFXvKfqu0Dip25TnKs06ZeQx0Rt8_etizs')
 
@@ -8,7 +7,7 @@ bot = telebot.TeleBot('5768637891:AAFXvKfqu0Dip25TnKs06ZeQx0Rt8_etizs')
 @bot.message_handler(commands=['start'])
 def start(message):
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-    btn1 = types.KeyboardButton("💅 Ноготочки")
+    btn1 = telebot.types.KeyboardButton("💅 Ноготочки")
     markup.add(btn1)
     bot.send_message(message.chat.id,
                      "Привет, {0.first_name}!\nЯ - {1.first_name}, бот созданный для того, чтобы ты мог(ла) "
