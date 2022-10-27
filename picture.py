@@ -4,11 +4,11 @@ from YandexImagesParser.ImageParser import YandexImage
 
 def get_picture_links(query):
     parser = YandexImage()
-    urls = []
+    urls_ = []
     for item in parser.search(query):
-        urls.append(item.preview.url)
+        urls_.append(item.preview.url)
 
-    return urls
+    return urls_
 
 
 manicure_urls = get_picture_links("маникюр без лица")
